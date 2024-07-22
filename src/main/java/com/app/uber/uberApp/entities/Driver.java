@@ -1,14 +1,13 @@
 package com.app.uber.uberApp.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.locationtech.jts.geom.Point;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
+@Getter
+@Setter
 public class Driver {
 
     @Id
@@ -21,6 +20,9 @@ public class Driver {
 
     private Double rating;
 
-    private Boolean isAvailable;
+    private Boolean available;
+
+    @Column(columnDefinition = "Geometry(Point, 4326)")
+    Point currentLocation;
 
 }
